@@ -1,0 +1,184 @@
+style:
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #b45b55;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+
+header {
+  background-color: #0052ff;
+  padding:20px;
+  border-bottom: 1px solid #202020;
+   text-align: center;
+}
+
+header .logo {
+  max-width: 200px;
+  margin-bottom: 15px;
+  
+}
+
+header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: .5px;
+}
+
+
+
+
+main {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+}
+
+#reader {
+  width: 300px;
+  margin: 0 auto 30px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+#infoCliente {
+  display: none;
+  background-color: #111;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 350px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  border: 1px solid #222;
+}
+
+#infoCliente h2 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+.dato {
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.dato strong {
+  color: #4ae0f2;
+}
+
+/* Botón */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0517bb;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #0517bb;
+}
+
+
+
+#reader {
+  width: 100%;
+  max-width: 300px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+z
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #b419c2; 
+   z-index: 2; /* Más alto que el piso */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.85rem;
+  margin-top: 30px; /* 🟢 agrega espacio visual arriba */
+} 
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #0052ff;
+  z-index: 1;
+}
+
+body::before {
+  left: 0;
+}
+body::after {
+  right: 0;
+}
+
+/* Piso con rayas */
+.piso {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: repeating-linear-gradient(
+    to top,
+    #0052ff,
+    #0052ff 4px,
+    transparent 4px,
+    transparent 12px
+  );
+  z-index: 0;
+}
+
+/* Figuras de colores */
+.figura {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+}
+.f1 { background: #f22eb4; top: 10px; left: 10px; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.f2 { background: #f26522; top: 20%; right: 10px; transform: rotate(30deg); }
+.f3 { background: #00cfff; bottom: 80px; left: 20px; clip-path: circle(50%); }
