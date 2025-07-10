@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -12,28 +12,31 @@
 
   <header>
     <img src="Logo-holeout.png" alt="logo" class="logo" />
-    <h1>gggg</h1>
   </header>
 
   <main>
-    <div id="reader"></div>
+    <div class="contenedor">
+      <button onclick="iniciarEscaneo()" id="botonEscanear">Iniciar escaneo</button>
+      <div id="reader" style="display: none;"></div>
 
-    <div id="infoCliente">
-      <h2>Cliente</h2>
-      <div class="dato"><strong>:</strong> Nombre<span id="nombre"></span></div>
-      <div class="dato"><strong>:</strong> Apellido<span id="apellido"></span></div>
-      <div class="dato"><strong>:</strong> Fecha nacimiento<span id="nacimiento"></span></div>
-      <div class="dato"><strong>:</strong> Correo<span id="correo"></span></div>
-      <div class="dato"><strong>:</strong> Telefono <span id="telefono"></span></div>
-      <div class="dato"><strong>:</strong> Expiracion <span id="expiracion"></span></div>   
-      <button onclick="reiniciarEscaneo()"></button>
+      <div id="infoCliente" style="display: none;">
+        <h2>Cliente</h2>
+        <div class="dato"><strong>Nombre:</strong> <span id="nombre"></span></div>
+        <div class="dato"><strong>Apellido:</strong> <span id="apellido"></span></div>
+        <div class="dato"><strong>Fecha nacimiento:</strong> <span id="nacimiento"></span></div>
+        <div class="dato"><strong>Correo:</strong> <span id="correo"></span></div>
+        <div class="dato"><strong>Teléfono:</strong> <span id="telefono"></span></div>
+        <div class="dato"><strong>Expiración:</strong> <span id="expiracion"></span></div>
+        <button onclick="reiniciarEscaneo()">Nuevo escaneo</button>
+      </div>
     </div>
   </main>
-  <footer>
-    Gabriel Cedeno Version MVP
-  </footer>
 
-  
+  <footer>@Gabriel Cedeño - Versión MVP</footer>
+  <div class="figura f1"></div>
+  <div class="figura f2"></div>
+  <div class="figura f3"></div>
+  <div class="piso"></div>
 
   <script>
     const clientes = {
@@ -57,17 +60,34 @@
 
     const qrScanner = new Html5Qrcode("reader");
 
+    function iniciarEscaneo() {
+      document.getElementById("botonEscanear").style.display = "none";
+      document.getElementById("reader").style.display = "block";
+
+      qrScanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        (decodedText) => {
+          qrScanner.stop();
+          mostrarCliente(decodedText.trim());
+        }
+      ).catch(err => {
+        console.error("Error al iniciar escáner:", err);
+        alert("No se pudo acceder a la cámara. Verifica los permisos o intenta en otro navegador.");
+      });
+    }
+
     function mostrarCliente(id) {
       const cliente = clientes[id];
       if (cliente) {
-        document.getElementById("nombre").textContent  = cliente.nombre;
+        document.getElementById("nombre").textContent = cliente.nombre;
         document.getElementById("apellido").textContent = cliente.apellido;
         document.getElementById("nacimiento").textContent = cliente.nacimiento;
         document.getElementById("correo").textContent = cliente.correo;
         document.getElementById("telefono").textContent = cliente.telefono;
+        document.getElementById("expiracion").textContent = cliente.expiracion;
         document.getElementById("infoCliente").style.display = "block";
         document.getElementById("reader").style.display = "none";
-        document.getElementById("expiracion").textContent  = cliente.expiracion;
       } else {
         alert("Cliente no encontrado");
       }
@@ -76,6 +96,7 @@
     function reiniciarEscaneo() {
       document.getElementById("infoCliente").style.display = "none";
       document.getElementById("reader").style.display = "block";
+
       qrScanner.start(
         { facingMode: "environment" },
         { fps: 10, qrbox: 250 },
@@ -83,17 +104,11 @@
           qrScanner.stop();
           mostrarCliente(decodedText.trim());
         }
-      );
+      ).catch(err => {
+        console.error("Error al reiniciar escáner:", err);
+        alert("No se pudo acceder a la cámara.");
+      });
     }
-
-    qrScanner.start(
-      { facingMode: "environment" },
-      { fps: 10, qrbox: 250 },
-      (decodedText) => {
-        qrScanner.stop();
-        mostrarCliente(decodedText.trim());
-      }
-    );
   </script>
 </body>
 </html>

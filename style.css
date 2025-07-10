@@ -1,25 +1,26 @@
-style:
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #b45b55;
-  color: #fff;
+  background-color: #000;
+  color: white;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
 }
 
-
 header {
   background-color: #0052ff;
-  padding:20px;
+  padding: 20px;
   border-bottom: 1px solid #202020;
-   text-align: center;
 }
 
 header .logo {
   max-width: 200px;
   margin-bottom: 15px;
-  
 }
 
 header h1 {
@@ -28,9 +29,6 @@ header h1 {
   color: #ffffff;
   letter-spacing: .5px;
 }
-
-
-
 
 main {
   flex: 1;
@@ -42,12 +40,20 @@ main {
 }
 
 #reader {
-  width: 300px;
-  margin: 0 auto 30px;
+  width: 100%;
+  max-width: 300px;
+  min-height: 250px;
+  margin: 20px auto 30px;
   border-radius: 12px;
   overflow: hidden;
+  z-index: 5;
+  display: block !important;
 }
 
+#reader > div {
+  background-color: white;
+  z-index: 5;
+}
 
 #infoCliente {
   display: none;
@@ -78,7 +84,6 @@ main {
   color: #4ae0f2;
 }
 
-/* Botón */
 button {
   margin-top: 20px;
   padding: 10px 20px;
@@ -95,64 +100,14 @@ button:hover {
   background-color: #0517bb;
 }
 
-
-
-#reader {
-  width: 100%;
-  max-width: 300px;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-z
-main {
-  flex: 1;
-}
-
 footer {
   background-color: #b419c2; 
-   z-index: 2; /* Más alto que el piso */
+  z-index: 2;
   color: white;
   text-align: center;
   padding: 10px;
   font-size: 0.85rem;
-  margin-top: 30px; /* 🟢 agrega espacio visual arriba */
-} 
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #000;
-  color: white;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  width: 10px;
-  height: 100%;
-  background-color: #0052ff;
-  z-index: 1;
-}
-
-body::before {
-  left: 0;
-}
-body::after {
-  right: 0;
+  margin-top: 30px;
 }
 
 /* Piso con rayas */
