@@ -1,1 +1,1 @@
-# qr-pruebas
+# QR-SCANNER
